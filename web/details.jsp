@@ -2,6 +2,7 @@
 <%@ page import="bitlab.sprint.db.Task" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.text.ParseException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -108,10 +109,14 @@
                 <%
                   String dateOfDeadline  = task.getDeadlineDate();
                   SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                  Date date = format.parse(dateOfDeadline);
-                  format.applyPattern("yyyy-MM-dd");
-                  dateOfDeadline = format.format(date);
-                  System.out.println("HERE IS CHAMP: " + dateOfDeadline);
+                  Date date = null;
+                  try {
+                    date = format.parse(dateOfDeadline);
+                    format.applyPattern("yyyy-MM-dd");
+                    dateOfDeadline = format.format(date);
+                  } catch (ParseException ignored) {
+                  }
+                  System.out.println("HERE IS CHAMP FORMAT: " + dateOfDeadline);
                 %>
                 <div class="row mt-3">
                   <div class="col-12">
