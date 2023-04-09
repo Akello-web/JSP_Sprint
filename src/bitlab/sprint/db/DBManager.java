@@ -1,10 +1,11 @@
 package bitlab.sprint.db;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DBManager {
     private static final ArrayList<Task> tasks = new ArrayList<>();
-    private static int id = 6;
+    private static long id = 6L;
 
     static {
         tasks.add(new Task(1L,
@@ -35,31 +36,32 @@ public class DBManager {
     }
 
     public static void addTask(Task task){
-        task.setId((long) id);
+        task.setId(id);
         tasks.add(task);
         id++;
     }
 
     public static Task getTask(Long id){
         return tasks.stream()
-                .filter(task -> task.getId()== id)
+                .filter(task -> Objects.equals(task.getId(), id))
                 .findFirst()
                 .orElse(null);
     }
 
     public static void updateTask(Task updatedTask){
         for (int i = 0; i < tasks.size(); i++) {
-            if(tasks.get(i).getId()== updatedTask.getId()){
+            if(Objects.equals(tasks.get(i).getId(), updatedTask.getId())){
                 tasks.set(i, updatedTask);
                 break;
             }
         }
     }
 
-    public static void deleteBook(Long id){
-        for (int i = 0; i < 10; i++) {
-            if(tasks.get(i).getId()== id){
-                tasks.remove(id);
+    public static void deleteTask(long id){
+        for (int i = 0; i < tasks.size(); i++) {
+            if(tasks.get(i).getId() == id) {
+                tasks.remove((int)id);
+                System.out.println("Success");
                 break;
             }
         }
