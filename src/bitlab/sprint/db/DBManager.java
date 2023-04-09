@@ -60,7 +60,7 @@ public class DBManager {
     public static void deleteTask(long id){
         for (int i = 0; i < tasks.size(); i++) {
             if(tasks.get(i).getId() == id) {
-                tasks.remove((int)id);
+                tasks.remove(tasks.get(i));
                 System.out.println("Success");
                 break;
             }

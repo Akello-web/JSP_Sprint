@@ -34,7 +34,7 @@
     </div>
 
     <div class="row">
-        <h3 class="text-center">Welcome to TASK MANAGER!</h3>
+        <h3 class="text-center">Welcome to <%=storeName%>!</h3>
     </div>
 
     <div class="row mt-3">
