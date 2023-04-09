@@ -11,21 +11,22 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(value = "/add-task")
-public class addTaskServlet extends HttpServlet {
+public class AddTaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
         String name = request.getParameter("task_name");
         String description = request.getParameter("task_description");
         String deadline = request.getParameter("task_deadline");
-        String status = request.getParameter("task_status");
+        boolean status = Boolean.parseBoolean(request.getParameter("task_status"));
 
         Task newtask = new Task();
         newtask.setName(name);
         newtask.setDescription(description);
         newtask.setDeadlineDate(deadline);
+        newtask.setStatus(status);
 
         DBManager.addTask(newtask);
+        System.out.print(newtask.getDeadlineDate());
         response.sendRedirect("/");
     }
 }
