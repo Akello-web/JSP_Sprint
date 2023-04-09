@@ -1,5 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bitlab.sprint.db.Task" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -103,6 +105,14 @@
                   </div>
                 </div>
 
+                <%
+                  String dateOfDeadline  = task.getDeadlineDate();
+                  SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+                  Date date = format.parse(dateOfDeadline);
+                  format.applyPattern("yyyy-MM-dd");
+                  dateOfDeadline = format.format(date);
+                  System.out.println("HERE IS CHAMP: " + dateOfDeadline);
+                %>
                 <div class="row mt-3">
                   <div class="col-12">
                     <label>DEADLINE: </label>
@@ -110,7 +120,7 @@
                 </div>
                 <div class="row mt-1" >
                   <div class="col-12">
-                        <input type="date" class="form-control" name="task_deadline" value="<%=task.getDeadlineDate()%>">
+                        <input type="date" class="form-control" name="task_deadline" value="<%=dateOfDeadline%>">
                   </div>
                 </div>
 
