@@ -107,16 +107,16 @@
                 </div>
 
                 <%
-                  String dateOfDeadline  = task.getDeadlineDate();
-                  SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                  Date date = null;
-                  try {
-                    date = format.parse(dateOfDeadline);
-                    format.applyPattern("yyyy-MM-dd");
-                    dateOfDeadline = format.format(date);
-                  } catch (ParseException ignored) {
-                  }
-                  System.out.println("HERE IS CHAMP FORMAT: " + dateOfDeadline);
+                    String dateOfDeadline  = task.getDeadlineDate();
+                    SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+                    Date date = null;
+                    try {
+                      date = format.parse(dateOfDeadline);
+                      format.applyPattern("yyyy-MM-dd");
+                      dateOfDeadline = format.format(date);
+                    } catch (ParseException ignored) {
+                    }
+                    System.out.println("HERE IS CHAMP FORMAT: " + dateOfDeadline);
                 %>
                 <div class="row mt-3">
                   <div class="col-12">
