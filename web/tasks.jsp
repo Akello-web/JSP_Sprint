@@ -11,7 +11,7 @@
     <%@include file="navbar.jsp"%>
     <div class="row mt-3">
         <div class="col-12">
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add_book">
+            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#add_book">
                 + Добавить Задание
             </button>
 
@@ -61,7 +61,7 @@
                     <td><%=t.getName()%></td>
                     <td><%=t.getDeadlineDate()%></td>
                     <td><%=(t.isStatus())?"Done":"Not"%></td>
-                    <td><a href="/details?task_id=<%=t.getId()%>" class="btn btn-primary btn-small">Details</a></td>
+                    <td><a href="/details?task_id=<%=t.getId()%>" class="btn btn-info btn-small">Details</a></td>
                 </tr>
                 <%
                         }
